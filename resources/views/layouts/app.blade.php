@@ -47,17 +47,19 @@
   <main class="main">
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section accent-background">
+    <section id="hero" class="hero section accent-background" >
 
       <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-5 justify-content-between">
           <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-            <h2><span>Welcome to </span><span class="accent">Impact</span></h2>
-            <p>Sed autem laudantium dolores. Voluptatem itaque ea consequatur eveniet. Eum quas beatae cumque eum quaerat.</p>
-            <div class="d-flex">
-              <a href="#about" class="btn-get-started">Get Started</a>
-              <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
-            </div>
+            <h2 ><span style="color:rgb(14, 51, 10)">Welcome to </span><span class="accent">UdiarY</span></h2>
+            <p data-aos="fade-up" style="font-size: 16px; color:rgb(165, 238, 204)">
+              Each work is a spark of light that appears in the midst of darkness, giving a glimmer of hope in a place that is silent and untouched.
+              It illuminates the hidden spaces, the deepest corners that are never touched by ordinary sight. 
+              In every stroke, every color, and every detail, there is a glimmer of light that penetrates deep into the soul, evoking hidden emotions and forgotten feelings. 
+              The work speaks in an invisible language, conveying profound messages that words cannot express, yet feel so real in their silence.
+            </p>
+
           </div>
           <div class="col-lg-5 order-1 order-lg-2">
             <img src="assets/img/hero-img.svg" class="img-fluid" alt="">
@@ -72,14 +74,14 @@
               <div class="col-xl-3 col-md-6">
                 <div class="icon-box">
                   <div class="icon"><i class="bi bi-book"></i></div>
-                  <h4 class="title"><a href="" class="stretched-link">UstoriettE</a></h4>
+                  <h4 class="title"><a href="" class="stretched-link">UpoeM</a></h4>
                 </div>
               </div><!--End Icon Box -->
 
               <div class="col-xl-3 col-md-6">
                 <div class="icon-box">
                   <div class="icon"><i class="bi bi-file-earmark-text"></i></div>
-                  <h4 class="title"><a href="" class="stretched-link">UpoetrY</a></h4>
+                  <h4 class="title"><a href="{{ url('/poetries') }}" class="stretched-link">UpoetrY</a></h4>
                 </div>
               </div><!--End Icon Box -->
 

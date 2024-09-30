@@ -12,8 +12,9 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="#hero" class="active">Home<br></a></li>
-            <li><a href="blog.html">Udiary</a></li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ url('/') }}">UdiarY</a>
+            </li>
             <li class="dropdown"><a href="#"> <span> U </span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
                 <li><a href="#">ULogin.</a></li>
