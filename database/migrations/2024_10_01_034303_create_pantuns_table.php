@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('poetries', function (Blueprint $table) {
+        Schema::create('pantuns', function (Blueprint $table) {
             $table->id();
             $table->string('title'); // Judul diary
             $table->longText('content'); // Isi diary
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('poetries');
+        Schema::dropIfExists('pantuns');
     }
 };

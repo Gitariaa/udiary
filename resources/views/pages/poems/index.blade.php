@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>UpoetrY - UdiarY</title>
+  <title>UpoeM - UdiarY</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -58,7 +58,7 @@
             </a></li>
             <li class="dropdown"><a href="#"><span>All</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
-                <li><a href="{{ url('/poems') }}">UpoeM</a></li>
+                <li><a href="{{ url('/poetries')}}">UpoetrY</a></li>
                 <li><a href="{{ url('/pantuns') }}">UpantuN</a></li>
                 <li><a href="{{ url('/quotes') }}">UquoteS</a></li>
               </ul>
@@ -82,9 +82,9 @@
         <div class="container">
           <div class="row d-flex justify-content-center text-center">
             <div class="col-lg-8">
-              <h1>UpoetrY</h1>
-              <p class="mb-0">"The beauty of poetry lies in its ability to capture complex human experiences in just a few carefully chosen words."</p>
-              <p> Keindahan puisi terletak pada kemampuannya untuk menangkap pengalaman manusia yang kompleks hanya dengan beberapa kata yang dipilih dengan hati-hati.</p>
+              <h1>UpoeM</h1>
+              <p class="mb-0">"The beauty of lyrics lies in their musicality, where the words create a melody that resonates with the listener."</p>
+              <p> Keindahan syair terletak pada musikalitasnya, di mana kata-kata menciptakan melodi yang bergema di hati pendengar.</p>
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@
         <div class="container">
           <ol>
             <li><a href="{{ url('/')}}">UdiarY</a></li>
-            <li class="current">UpoetrY</li>
+            <li class="current">UpoeM</li>
           </ol>
         </div>
       </nav>
