@@ -53,7 +53,7 @@
         <div class="row gy-5 justify-content-between">
           <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
             <h2 ><span style="color:rgb(14, 51, 10)">Welcome to </span><span class="accent">UdiarY</span></h2>
-            <p data-aos="fade-up" style="font-size: 16px; color:rgb(165, 238, 204)">
+            <p data-aos="fade-up" style="font-size: 16px; color:rgb(219, 245, 233)">
               Each work is a spark of light that appears in the midst of darkness, giving a glimmer of hope in a place that is silent and untouched.
               It illuminates the hidden spaces, the deepest corners that are never touched by ordinary sight. 
               In every stroke, every color, and every detail, there is a glimmer of light that penetrates deep into the soul, evoking hidden emotions and forgotten feelings. 

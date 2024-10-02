@@ -8,6 +8,8 @@ Route::get('/', function () {
 });
 
 Route::get('/poetries', [App\Http\Controllers\PoetryController::class, 'index'])->name('poetries.index');
+Route::get('/poetries.create', [App\Http\Controllers\PoetryController::class, 'create'])->name('poetries.create');
+Route::post('/poetries', [App\Http\Controllers\PoetryController::class, 'store'])->name('poetries.store');
 
 Route::get('/poems', [App\Http\Controllers\PoemController::class, 'index'])->name('poems.index');
 

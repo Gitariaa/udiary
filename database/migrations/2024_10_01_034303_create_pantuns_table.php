@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title'); // Judul diary
             $table->longText('content'); // Isi diary
-            $table->string('category');
+            $table->string('theme');
             $table->unsignedBigInteger('user_id'); // ID user yang membuat diary
             $table->foreign('user_id')->references('id')->on('users'); // Relasi ke tabel users
             $table->timestamps();

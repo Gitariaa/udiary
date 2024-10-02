@@ -32,15 +32,14 @@ class PoetryController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required',
-            'privacy' => 'required|in:public,private',
+            
         ]);
 
         // Membuat diary baru
         Poetry::create([
             'title' => $request->title,
             'content' => $request->content,
-            'privacy' => $request->privacy,
-            'user_id' => auth(), // Mengambil ID user yang login
+            'user_id' => $request->user_id, // Mengambil ID pengguna yang terautentikasi
         ]);
 
         return redirect()->route('pages.poetries.index')->with('success', 'UdiarY created successfully.');

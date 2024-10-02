@@ -52,10 +52,11 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href ="">
+            <li><a href ="{{ route('poetries.create')}}">
                 <span class="bi bi-plus-circle"></span>
                 Create New
             </a></li>
+
             <li class="dropdown"><a href="#"><span>All</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
                 <li><a href="{{ url('/poems') }}">UpoeM</a></li>
@@ -101,6 +102,27 @@
 
     <!-- Blog Posts Section -->
     <section id="blog-posts" class="blog-posts section">
+
+      <div class="container">
+        <div class="row">
+            @foreach($poetries as $poetry)
+                <div class="col-sm-6 col-md-4 col-lg-3"> <!-- Setiap kartu puisi -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h6 class="text-muted">{{ $poetry->theme }}</h6> <!-- Menampilkan tema -->
+                            <h5 class="card-title">
+                                <a href="{{ route('poetries.show', $poetry->id) }}" class="text-dark">
+                                    {{ $poetry->title }}
+                                </a>
+                            </h5>
+                            <p class="text-muted mb-2">{{ $poetry->user->name }}</p> <!-- Menampilkan nama penulis -->
+                            <p class="text-muted">{{ $poetry->created_at->format('M d, Y') }}</p> <!-- Menampilkan tanggal -->
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+      </div>
 
       <div class="container">
         <div class="row gy-4">
