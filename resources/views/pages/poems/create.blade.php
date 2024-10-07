@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>UpoetrY - Create</title>
+  <title>UpoeM - Create</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -49,28 +49,28 @@
                     <div class="card-body card-title text-center mb-4 text-uppercase">
                         <h4 class="fw-bold" style="font-size: 30px; color:rgb(44, 101, 60)" >
                             <span class="bi bi-pen"></span>
-                            Create New - Poetry
+                            Create New - Poems
                         </h4>
                     </div>
 
-                    <form action="{{ route('poetries.store') }}" method="POST" class="bg-light p-4 rounded shadow">
+                    <form action="{{ route('poems.store') }}" method="POST" class="bg-light p-4 rounded shadow">
                         @csrf
     
                         <div class="card shadow-sm border-0">
                             <div class="card-body">
                                 <div class="form-group mb-4">
                                     <label for="title" class="form-label">Title<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control shadow-sm" id="title" name="title" placeholder="Masukkan judul puisi..." required>
+                                    <input type="text" class="form-control shadow-sm" id="title" name="title" placeholder="Masukkan judul syair..." required>
                                 </div>
                         
                                 <div class="form-group mb-4">
                                     <label for="theme" class="form-label">Theme<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control shadow-sm" id="theme" name="theme" placeholder="Masukkan tema puisi..." required>
+                                    <input type="text" class="form-control shadow-sm" id="theme" name="theme" placeholder="Masukkan tema syair..." required>
                                 </div>
                         
                                 <div class="form-group mb-4">
-                                    <label for="content" class="form-label">Your Poetry<span class="text-danger">*</span></label>
-                                    <textarea class="form-control shadow-sm" id="content" name="content" rows="5" placeholder="Tulis isi puisi Anda di sini..." required></textarea>
+                                    <label for="content" class="form-label">Your Poem<span class="text-danger">*</span></label>
+                                    <textarea class="form-control shadow-sm" id="content" name="content" rows="5" placeholder="Tulis isi Syair Anda di sini..." required></textarea>
                                 </div>
 
                                 <script>
@@ -88,8 +88,8 @@
                         
                                 <div class="d-flex justify-content-around">
                                     <button type="submit" class="btn btn-success rounded-pill shadow-lg"> Save </button>
-                                    <a href="{{ route('poetries.index') }}" class="btn btn-primary rounded-pill shadow-lg"> Cancel </a>
-                                    <a href="{{ route('poetries.index') }}" class="btn btn-secondary rounded-pill shadow-lg"> Back </a>
+                                    <a href="{{ route('poems.index') }}" class="btn btn-primary rounded-pill shadow-lg"> Cancel </a>
+                                    <a href="{{ route('poems.index') }}" class="btn btn-secondary rounded-pill shadow-lg"> Back </a>
                                 </div> 
                             </div>
                         </div>

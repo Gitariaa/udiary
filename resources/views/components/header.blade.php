@@ -17,8 +17,9 @@
             </li>
             <li class="dropdown"><a href="#"> <span> U </span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
-                <li><a href="">ULogin.</a></li>
+                <li><a href="{{ route('login') }}">ULogin.</a></li>
                 <li><a href="{{ url('/') }}">ULogout.</a></li>
+                <li><a href="{{ url('/') }}">UBack.</a></li>
               </ul>
             </li>
           </ul>
