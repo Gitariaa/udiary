@@ -84,6 +84,13 @@
                             </div>
 
                             <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+
+                            <div>
+                                <p class="mb-0">Don't have an account? 
+                                    <a href="{{ route('register') }}" class="text-white fw-bold">Register Here</a>
+                                </p>
+                            </div>
+                            
                         </form>
                     </div>
 
