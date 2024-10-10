@@ -9,7 +9,7 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ asset('assets/img/menulis-1.png') }}" rel="icon">
   <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -69,9 +69,14 @@
                                 </div>
                         
                                 <div class="form-group mb-4">
-                                    <label for="content" class="form-label">Your Poem<span class="text-danger">*</span></label>
+                                    <label for="content" class="form-label">Your Pantun<span class="text-danger">*</span></label>
                                     <textarea class="form-control shadow-sm" id="content" name="content" rows="5" placeholder="Tulis isi pantun Anda di sini..." required></textarea>
                                 </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="name" class="form-label">Your Name<span class="text-danger">*</span></label>
+                                    <textarea class="form-control shadow-sm" id="name" name="name" placeholder="Masukkan nama Anda..." required></textarea>
+                                </div>                                
 
                                 <script>
                                     document.addEventListener('DOMConcentLoaded', function () {

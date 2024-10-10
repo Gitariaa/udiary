@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Quote extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'content', 'theme' ,'user_id'];
+    protected $fillable = ['title', 'content', 'theme', 'name','user_id'];
 
     public function user()
     {

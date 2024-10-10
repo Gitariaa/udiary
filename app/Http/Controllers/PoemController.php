@@ -25,12 +25,12 @@ class PoemController extends Controller
         ]);
 
         // Membuat diary baru
-        Poem::create([
-            'title' => $request->title,
-            'content' => $request->content,
-            'user_id' => $request->user_id, // Mengambil ID pengguna yang terautentikasi
-        ]);
-
+        Poem::create($request->all());
         return redirect()->route('pages.poems.index')->with('success', 'UdiarY created successfully.');
+    }
+    public function show(string $id)
+    {
+        $poems = Poem::find($id);
+        return view('pages.poems.show', compact('poems'));
     }
 }

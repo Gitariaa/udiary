@@ -16,10 +16,8 @@ Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'r
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/poetries', [App\Http\Controllers\PoetryController::class, 'index'])->name('poetries.index');
-Route::get('/poetries/{poetry}', [App\Http\Controllers\PoetryController::class, 'show'])->name('poetries.show');
 
 Route::get('/poems', [App\Http\Controllers\PoemController::class, 'index'])->name('poems.index');
-Route::get('/poems/{poem}', [App\Http\Controllers\PoemController::class, 'show'])->name('poems.show');
 
 Route::get('/pantuns', [App\Http\Controllers\PantunController::class, 'index'])->name('pantuns.index');
 
@@ -39,5 +37,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/quotes/create', [App\Http\Controllers\QuoteController::class, 'create'])->name('quotes.create');
     Route::post('/quotes', [App\Http\Controllers\QuoteController::class, 'store'])->name('quotes.store');
 });
+
+//setiap route parameter dibawah ini..
+Route::get('/poetries/{id}', [App\Http\Controllers\PoetryController::class, 'show'])->name('poetries.show');
+Route::get('/poems/{id}', [App\Http\Controllers\PoemController::class, 'show'])->name('poems.show');
+Route::get('/pantuns/{id}', [App\Http\Controllers\PantunController::class, 'show'])->name('pantuns.show');
+Route::get('/quotes/{id}', [App\Http\Controllers\QuoteController::class, 'show'])->name('quotes.show');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title'); // Judul diary
             $table->longText('content'); // Isi diary
             $table->string('theme');
+            $table->string('name'); // Nama penulis, optional dengan default
             $table->unsignedBigInteger('user_id'); // ID user yang membuat diary
             $table->foreign('user_id')->references('id')->on('users'); // Relasi ke tabel users
             $table->timestamps();

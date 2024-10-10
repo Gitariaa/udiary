@@ -25,12 +25,12 @@ class QuoteController extends Controller
         ]);
 
         // Membuat diary baru
-        Quote::create([
-            'title' => $request->title,
-            'content' => $request->content,
-            'user_id' => $request->user_id, // Mengambil ID pengguna yang terautentikasi
-        ]);
-
+        Quote::create($request->all());
         return redirect()->route('pages.quotes.index')->with('success', 'UdiarY created successfully.');
+    }
+    public function show(string $id)
+    {
+        $quotes =Quote::find($id);
+        return view('pages.quotes.show', compact('quotes'));
     }
 }

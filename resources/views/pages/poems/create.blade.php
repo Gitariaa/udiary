@@ -73,6 +73,11 @@
                                     <textarea class="form-control shadow-sm" id="content" name="content" rows="5" placeholder="Tulis isi Syair Anda di sini..." required></textarea>
                                 </div>
 
+                                <div class="form-group mb-4">
+                                    <label for="name" class="form-label">Your Name<span class="text-danger">*</span></label>
+                                    <textarea class="form-control shadow-sm" id="name" name="name" placeholder="Masukkan nama Anda..." required></textarea>
+                                </div>
+
                                 <script>
                                     document.addEventListener('DOMConcentLoaded', function () {
                                         const contentArea = document.getElementById('content');

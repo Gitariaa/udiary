@@ -20,17 +20,18 @@ class PantunController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'content' => 'required',
-            
+            'content' => 'required|string',
+            'theme' => 'required|string',
+            'name' => 'required|string|max:255', // Validasi nama
         ]);
 
         // Membuat diary baru
-        Pantun::create([
-            'title' => $request->title,
-            'content' => $request->content,
-            'user_id' => $request->user_id, // Mengambil ID pengguna yang terautentikasi
-        ]);
-
-        return redirect()->route('pages.pantuns.index')->with('success', 'UdiarY created successfully.');
+        Pantun::create($request->all());
+        return redirect()->route('pantuns.index')->with('success', 'UdiarY created successfully.');
+    }
+    public function show(string $id)
+    {
+        $pantuns = Pantun::find($id);
+        return view('pages.pantuns.show', compact('pantuns'));
     }
 }

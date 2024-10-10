@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Udiary - Login</title>
+    <title>Udiary - Register</title>
 
     <!-- Favicons -->
   <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">

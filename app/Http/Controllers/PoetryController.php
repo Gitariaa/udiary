@@ -27,6 +27,7 @@ class PoetryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    
     public function store(Request $request)
     {
         $request->validate([
@@ -36,12 +37,7 @@ class PoetryController extends Controller
         ]);
 
         // Membuat diary baru
-        Poetry::create([
-            'title' => $request->title,
-            'content' => $request->content,
-            'user_id' => $request->user_id, // Mengambil ID pengguna yang terautentikasi
-        ]);
-
+        Poetry::create($request->all());
         return redirect()->route('pages.poetries.index')->with('success', 'UdiarY created successfully.');
     }
 
@@ -50,7 +46,8 @@ class PoetryController extends Controller
      */
     public function show(string $id)
     {
-        return view('pages.poetries.show', compact('poetry'));
+        $poetries = Poetry::find($id);
+        return view('pages.poetries.show', compact('poetries'));
     }
 
     /**
@@ -58,7 +55,7 @@ class PoetryController extends Controller
      */
     public function edit(string $id)
     {
-        return view('pages.poetries.edit', compact('poetry'));
+        return view('pages.poetries.edit', compact('poetries'));
     }
 
     /**
@@ -69,7 +66,6 @@ class PoetryController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required',
-            'privacy' => 'required|in:public,private',
         ]);
 
         // Update diary
