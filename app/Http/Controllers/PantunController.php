@@ -22,7 +22,6 @@ class PantunController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'theme' => 'required|string',
-            'name' => 'required|string|max:255', // Validasi nama
         ]);
 
         // Membuat diary baru

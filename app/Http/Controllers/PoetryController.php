@@ -38,7 +38,7 @@ class PoetryController extends Controller
 
         // Membuat diary baru
         Poetry::create($request->all());
-        return redirect()->route('pages.poetries.index')->with('success', 'UdiarY created successfully.');
+        return redirect()->route('poetries.index')->with('success', 'UdiarY created successfully.');
     }
 
     /**

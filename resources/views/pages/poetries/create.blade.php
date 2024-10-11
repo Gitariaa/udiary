@@ -9,7 +9,7 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ asset('assets/img/menulis-1.png') }}" rel="icon">
   <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -73,11 +73,6 @@
                                     <textarea class="form-control shadow-sm" id="content" name="content" rows="5" placeholder="Tulis isi puisi Anda di sini..." required></textarea>
                                 </div>
 
-                                <div class="form-group mb-4">
-                                    <label for="name" class="form-label">Your Name<span class="text-danger">*</span></label>
-                                    <textarea class="form-control shadow-sm" id="name" name="name" placeholder="Masukkan nama Anda..." required></textarea>
-                                </div>
-
                                 <script>
                                     document.addEventListener('DOMConcentLoaded', function () {
                                         const contentArea = document.getElementById('content');
@@ -92,9 +87,9 @@
                                 <input type="hidden" name="user_id" value="{{ auth()->id() }}"> <!-- Ambil user_id dari auth -->
                         
                                 <div class="d-flex justify-content-around">
-                                    <button type="submit" class="btn btn-success rounded-pill shadow-lg"> Save </button>
-                                    <a href="{{ route('poetries.index') }}" class="btn btn-primary rounded-pill shadow-lg"> Cancel </a>
-                                    <a href="{{ route('poetries.index') }}" class="btn btn-secondary rounded-pill shadow-lg"> Back </a>
+                                    <a href="{{ route('poetries.index') }}" class="btn btn-outline-primary rounded-pill shadow-lg"><i class="bi bi-x-circle"></i> Cancel </a>
+                                    <button type="submit" class="btn btn-outline-success rounded-pill shadow-lg"><i class="bi bi-send"></i> Save </button>
+                                    <a href="{{ route('poetries.index') }}" class="btn btn-outline-secondary rounded-pill shadow-lg"><i class="bi bi-arrow-right-circle"></i> Back </a>
                                 </div> 
                             </div>
                         </div>

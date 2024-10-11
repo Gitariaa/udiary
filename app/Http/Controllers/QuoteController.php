@@ -21,16 +21,16 @@ class QuoteController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required',
-            
+            'theme' => 'required',
         ]);
 
         // Membuat diary baru
         Quote::create($request->all());
-        return redirect()->route('pages.quotes.index')->with('success', 'UdiarY created successfully.');
+        return redirect()->route('quotes.index')->with('success', 'UdiarY created successfully.');
     }
     public function show(string $id)
     {
-        $quotes =Quote::find($id);
+        $quotes = Quote::find($id);
         return view('pages.quotes.show', compact('quotes'));
     }
 }

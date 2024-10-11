@@ -9,7 +9,7 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ asset('assets/img/menulis-1.png') }}" rel="icon">
   <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -116,11 +116,11 @@
                       <div class="card-body">
                           <small class="text-muted">{{ $quote->theme }}</small>
                           <h5 class="card-title">
-                              <a href="{{ route('poetries.show', $quote->id) }}" class="text-dark">
+                              <a href="{{ route('quotes.show', $quote->id) }}" class="text-dark">
                                   {{ $quote->title }}
                               </a>
                           </h5>
-                          <p class="card-text"><strong>{{ $quoote->name }}</strong></p>
+                          <p class="card-text"><strong>{{ $quote->user->name }}</strong></p>
                           <p class="card-text text-muted">{{ $quote->created_at->format('M d, Y') }}</p>
                       </div>
                   </div>

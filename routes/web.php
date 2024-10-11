@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
 
 //setiap route parameter dibawah ini..
 Route::get('/poetries/{id}', [App\Http\Controllers\PoetryController::class, 'show'])->name('poetries.show');
+
 Route::get('/poems/{id}', [App\Http\Controllers\PoemController::class, 'show'])->name('poems.show');
 Route::get('/pantuns/{id}', [App\Http\Controllers\PantunController::class, 'show'])->name('pantuns.show');
 Route::get('/quotes/{id}', [App\Http\Controllers\QuoteController::class, 'show'])->name('quotes.show');

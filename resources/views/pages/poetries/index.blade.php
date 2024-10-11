@@ -9,7 +9,7 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ asset('assets/img/menulis-1.png') }}" rel="icon">
   <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -120,7 +120,7 @@
                                 {{ $poetry->title }}
                             </a>
                         </h5>
-                        <p class="card-text"><strong>{{ $poetry->name }}</strong></p>
+                        <p class="card-text"><strong>{{ $poetry->user->name }}</strong></p>
                         <p class="card-text text-muted">{{ $poetry->created_at->format('M d, Y') }}</p>
                     </div>
                 </div>

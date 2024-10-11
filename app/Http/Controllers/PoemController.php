@@ -21,12 +21,12 @@ class PoemController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required',
-            
+            'theme' => 'required|string',
         ]);
 
         // Membuat diary baru
         Poem::create($request->all());
-        return redirect()->route('pages.poems.index')->with('success', 'UdiarY created successfully.');
+        return redirect()->route('poems.index')->with('success', 'UdiarY created successfully.');
     }
     public function show(string $id)
     {
