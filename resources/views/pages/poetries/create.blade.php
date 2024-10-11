@@ -88,7 +88,7 @@
                         
                                 <div class="d-flex justify-content-around">
                                     <a href="{{ route('poetries.index') }}" class="btn btn-outline-primary rounded-pill shadow-lg"><i class="bi bi-x-circle"></i> Cancel </a>
-                                    <button type="submit" class="btn btn-outline-success rounded-pill shadow-lg"><i class="bi bi-send"></i> Save </button>
+                                    <button type="submit" class="btn btn-outline-success rounded-pill shadow-lg"><i class="bi bi-send"></i> Send </button>
                                     <a href="{{ route('poetries.index') }}" class="btn btn-outline-secondary rounded-pill shadow-lg"><i class="bi bi-arrow-right-circle"></i> Back </a>
                                 </div> 
                             </div>

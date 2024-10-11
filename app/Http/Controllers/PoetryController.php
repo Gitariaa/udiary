@@ -55,7 +55,8 @@ class PoetryController extends Controller
      */
     public function edit(string $id)
     {
-        return view('pages.poetries.edit', compact('poetries'));
+        $poetry = Poetry::findOrFail($id);
+        return view('pages.poetries.edit', compact('poetry'));
     }
 
     /**
@@ -71,8 +72,7 @@ class PoetryController extends Controller
 
         // Update diary
         $poetries = Poetry::find($id)->update($request->all());
-
-        return redirect()->route('pages.poetries.index')->with('success', 'UdiarY updated successfully.');
+        return redirect()->route('poetries.index')->with('success', 'UdiarY updated successfully.');
     }
 
     /**
@@ -80,7 +80,16 @@ class PoetryController extends Controller
      */
     public function destroy(string $id)
     {
-        $poetries = Poetry::find($id)->delete();
-        return redirect()->route('pages.poetries.index')->with('success', 'UdiarY deleted successfully.');
+        // Mencari pantun berdasarkan ID
+        $poetries = Poetry::find($id);
+        
+        // Memastikan pantun ditemukan sebelum menghapus
+        if ($poetries) {
+            $poetries->delete();
+            return redirect()->route('poetries.index')->with('success', 'Poetry deleted successfully.');
+        } else {
+            // Jika pantun tidak ditemukan, redirect dengan pesan error
+            return redirect()->route('poetries.index')->with('error', 'Poetry not found.');
+        }
     }
 }

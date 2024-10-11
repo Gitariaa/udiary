@@ -27,16 +27,18 @@ Route::get('/quotes', [App\Http\Controllers\QuoteController::class, 'index'])->n
 Route::middleware(['auth'])->group(function () {   
     Route::get('/poetries/create', [App\Http\Controllers\PoetryController::class, 'create'])->name('poetries.create');
     Route::post('/poetries', [App\Http\Controllers\PoetryController::class, 'store'])->name('poetries.store');
+    Route::get('/poetries/edit/{id}', [App\Http\Controllers\PoetryController::class, 'edit'])->name('poetries.edit');
+    Route::put('/poetries/{id}', [App\Http\Controllers\PoetryController::class, 'update'])->name('poetries.update');
+    Route::delete('/poetries/{id}', [App\Http\Controllers\PoetryController::class, 'destroy'])->name('poetries.destroy');
 
     Route::get('/poems/create', [App\Http\Controllers\PoemController::class, 'create'])->name('poems.create');
     Route::post('/poems', [App\Http\Controllers\PoemController::class, 'store'])->name('poems.store');
 
     Route::get('/pantuns/create', [App\Http\Controllers\PantunController::class, 'create'])->name('pantuns.create');
     Route::post('/pantuns', [App\Http\Controllers\PantunController::class, 'store'])->name('pantuns.store');
-    route::get('/pantuns/edit/{id}', [App\Http\Controllers\PantunController::class, 'edit'])->name('pantuns.edit');
-    route::put('/pantuns/{id}', [App\Http\Controllers\PantunController::class, 'update'])->name('pantuns.update');
+    Route::get('/pantuns/edit/{id}', [App\Http\Controllers\PantunController::class, 'edit'])->name('pantuns.edit');
+    Route::put('/pantuns/{id}', [App\Http\Controllers\PantunController::class, 'update'])->name('pantuns.update');
     Route::delete('/pantuns/{id}', [App\Http\Controllers\PantunController::class, 'destroy'])->name('pantuns.destroy');
-
 
     Route::get('/quotes/create', [App\Http\Controllers\QuoteController::class, 'create'])->name('quotes.create');
     Route::post('/quotes', [App\Http\Controllers\QuoteController::class, 'store'])->name('quotes.store');

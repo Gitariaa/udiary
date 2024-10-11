@@ -45,6 +45,7 @@
   </div>
 
   <main class="main">
+    
 
     <!-- Hero Section -->
     <section id="hero" class="hero section accent-background" >
@@ -104,7 +105,7 @@
           </div>
         </div>
 
-      </section><!-- /Hero Section -->
+    </section><!-- /Hero Section -->
 
  <!-- Scroll Top -->
  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up"></i></a>
