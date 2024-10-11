@@ -33,4 +33,36 @@ class PantunController extends Controller
         $pantuns = Pantun::find($id);
         return view('pages.pantuns.show', compact('pantuns'));
     }
+    public function edit(string $id)
+    {
+        $pantun = Pantun::findOrFail($id);
+        return view('pages.pantuns.edit', compact('pantun'));
+    }
+    public function update(Request $request, string $id)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required',
+            'theme' => 'required',
+        ]);
+
+        // Update diary
+        $pantuns = Pantun::find($id)->update($request->all());
+        return redirect()->route('pantuns.index')->with('success', 'UdiarY updated successfully.');
+    }
+    public function destroy(string $id)
+    {
+        // Mencari pantun berdasarkan ID
+        $pantun = Pantun::find($id);
+        
+        // Memastikan pantun ditemukan sebelum menghapus
+        if ($pantun) {
+            $pantun->delete();
+            return redirect()->route('pantuns.index')->with('success', 'Pantun deleted successfully.');
+        } else {
+            // Jika pantun tidak ditemukan, redirect dengan pesan error
+            return redirect()->route('pantuns.index')->with('error', 'Pantun not found.');
+        }
+    }
+
 }

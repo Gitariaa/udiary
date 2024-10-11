@@ -89,19 +89,19 @@
     
                             <!-- Navigation Buttons -->
                             <div class="d-flex justify-content-between mt-4">
-                                <a href="{{ route('pantuns.index') }}" class="btn btn-secondary rounded-pill shadow-lg">
+                                <a href="{{ route('pantuns.index') }}" class="btn btn-outline-secondary rounded-pill shadow-lg">
                                     <i class="bi bi-arrow-left-circle"></i> Back
                                 </a>
     
                                 <div class="d-flex">
-                                    <a href=" " class="btn btn-primary rounded-pill shadow-lg mx-2">
+                                    <a href="{{ route('pantuns.edit', $pantuns->id) }}" class="btn btn-outline-primary rounded-pill shadow-lg mx-2">
                                         <i class="bi bi-pencil-square"></i> Edit
                                     </a>
     
-                                    <form action=" " method="POST" onsubmit="return confirm('Are you sure to delete this pantun?');">
+                                    <form action="{{ route('pantuns.destroy', $pantuns->id) }}" method="POST" onsubmit="return confirm('Are you sure to delete this pantun?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger rounded-pill shadow-lg">
+                                        <button type="submit" class="btn btn-outline-danger rounded-pill shadow-lg">
                                             <i class="bi bi-trash"></i> Delete
                                         </button>
                                     </form>

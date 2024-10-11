@@ -33,6 +33,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/pantuns/create', [App\Http\Controllers\PantunController::class, 'create'])->name('pantuns.create');
     Route::post('/pantuns', [App\Http\Controllers\PantunController::class, 'store'])->name('pantuns.store');
+    route::get('/pantuns/edit/{id}', [App\Http\Controllers\PantunController::class, 'edit'])->name('pantuns.edit');
+    route::put('/pantuns/{id}', [App\Http\Controllers\PantunController::class, 'update'])->name('pantuns.update');
+    Route::delete('/pantuns/{id}', [App\Http\Controllers\PantunController::class, 'destroy'])->name('pantuns.destroy');
+
 
     Route::get('/quotes/create', [App\Http\Controllers\QuoteController::class, 'create'])->name('quotes.create');
     Route::post('/quotes', [App\Http\Controllers\QuoteController::class, 'store'])->name('quotes.store');
