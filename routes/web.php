@@ -33,6 +33,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/poems/create', [App\Http\Controllers\PoemController::class, 'create'])->name('poems.create');
     Route::post('/poems', [App\Http\Controllers\PoemController::class, 'store'])->name('poems.store');
+    Route::get('/poems/edit/{id}', [App\Http\Controllers\PoemController::class, 'edit'])->name('poems.edit');
+    Route::put('/poems/{id}', [App\Http\Controllers\PoemController::class, 'update'])->name('poems.update');
+    Route::delete('/poems/{id}', [App\Http\Controllers\PoemController::class, 'destroy'])->name('poems.destroy');
 
     Route::get('/pantuns/create', [App\Http\Controllers\PantunController::class, 'create'])->name('pantuns.create');
     Route::post('/pantuns', [App\Http\Controllers\PantunController::class, 'store'])->name('pantuns.store');
