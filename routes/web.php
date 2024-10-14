@@ -45,6 +45,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/quotes/create', [App\Http\Controllers\QuoteController::class, 'create'])->name('quotes.create');
     Route::post('/quotes', [App\Http\Controllers\QuoteController::class, 'store'])->name('quotes.store');
+    Route::get('/quotes/edit/{id}', [App\Http\Controllers\QuoteController::class, 'edit'])->name('quotes.edit');
+    Route::put('/quotes/{id}', [App\Http\Controllers\QuoteController::class, 'update'])->name('quotes.update');
+    Route::delete('/quotes/{id}', [App\Http\Controllers\QuoteController::class, 'destroy'])->name('quotes.destroy');
 });
 
 //setiap route parameter dibawah ini..

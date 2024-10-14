@@ -51,17 +51,17 @@
                             <div class="card-body">
                                 <div class="form-group mb-4">
                                     <label for="title" class="form-label">Title<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control shadow-sm" id="title" name="title" value="{{ old('title', $poems->title) }}" placeholder="Masukkan judul pantun..." required>
+                                    <input type="text" class="form-control shadow-sm" id="title" name="title" value="{{ old('title', $poems->title) }}" placeholder="Masukkan judul poem..." required>
                                 </div>
                         
                                 <div class="form-group mb-4">
                                     <label for="theme" class="form-label">Theme<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control shadow-sm" id="theme" name="theme" value="{{ old('theme', $poems->theme) }}" placeholder="Masukkan tema pantun..." required>
+                                    <input type="text" class="form-control shadow-sm" id="theme" name="theme" value="{{ old('theme', $poems->theme) }}" placeholder="Masukkan tema poem..." required>
                                 </div>
                         
                                 <div class="form-group mb-4">
                                     <label for="content" class="form-label">Your Pantun<span class="text-danger">*</span></label>
-                                    <textarea class="form-control shadow-sm" id="content" name="content" rows="5" placeholder="Tulis isi pantun Anda di sini..." required>{{ old('content', $poems->content) }}</textarea>
+                                    <textarea class="form-control shadow-sm" id="content" name="content" rows="5" placeholder="Tulis isi poem Anda di sini..." required>{{ old('content', $poems->content) }}</textarea>
                                 </div>
 
                                 <script>

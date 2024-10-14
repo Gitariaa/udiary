@@ -98,7 +98,7 @@
                                         <i class="bi bi-pencil-square"></i> Edit
                                     </a>
     
-                                    <form action="{{ route('pantuns.destroy', $pantuns->id) }}" method="POST" onsubmit="return confirm('Are you sure to delete this pantun?');">
+                                    <form action="{{ route('pantuns.destroy', $pantuns->id) }}" method="POST" onsubmit="return confirm('Are you sure to delete this Pantun?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-outline-danger rounded-pill shadow-lg">

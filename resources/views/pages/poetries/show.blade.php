@@ -98,7 +98,7 @@
                                         <i class="bi bi-pencil-square"></i> Edit
                                     </a>
     
-                                    <form action="{{ route('poetries.destroy', $poetries->id) }}" method="POST" onsubmit="return confirm('Are you sure to delete this poetry?');">
+                                    <form action="{{ route('poetries.destroy', $poetries->id) }}" method="POST" onsubmit="return confirm('Are you sure to delete this Poetry?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-outline-danger rounded-pill shadow-lg">
