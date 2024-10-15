@@ -48,7 +48,7 @@
                 <div class="card-body bg-light">
                     <div class="card-title text-center mb-4 text-uppercase">
                         <h5 class="fw-bold" style="font-size: 30px; color:rgb(44, 101, 60)">
-                            <span class="bi bi-eye"></span>
+                            <span class="bi bi-file-earmark-text"></span>
                             Poetry
                         </h5>
                     </div>
@@ -94,6 +94,7 @@
                                 </a>
     
                                 <div class="d-flex">
+                                    @auth
                                     <a href="{{ route('poetries.edit', $poetries->id) }}" class="btn btn-outline-primary rounded-pill shadow-lg mx-2">
                                         <i class="bi bi-pencil-square"></i> Edit
                                     </a>
@@ -105,6 +106,7 @@
                                             <i class="bi bi-trash"></i> Delete
                                         </button>
                                     </form>
+                                    @endauth
                                 </div>
                             </div>
                         </div>

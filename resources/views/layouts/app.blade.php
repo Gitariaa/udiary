@@ -55,12 +55,16 @@
           <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
             <h2 ><span style="color:rgb(14, 51, 10)">Welcome to </span><span class="accent">UdiarY</span></h2>
             <p data-aos="fade-up" style="font-size: 16px; color:rgb(219, 245, 233)">
-              Each work is a spark of light that appears in the midst of darkness, giving a glimmer of hope in a place that is silent and untouched.
-              It illuminates the hidden spaces, the deepest corners that are never touched by ordinary sight. 
-              In every stroke, every color, and every detail, there is a glimmer of light that penetrates deep into the soul, evoking hidden emotions and forgotten feelings. 
-              The work speaks in an invisible language, conveying profound messages that words cannot express, yet feel so real in their silence.
+              Each artwork is a spark of light that illuminates the darkness, awakening hope in quiet places.
+               Through its strokes of color and detail, the piece touches the soul, evoking hidden emotions that words cannot express. 
+               In its silence, the artwork speaks, conveying profound messages that feel real and full of meaning.🫧🌌
             </p>
-
+            <p data-aos="fade-up" style="font-size: 15px; color:rgb(196, 226, 212)">
+              "Setiap karya seni adalah percikan cahaya yang menerangi kegelapan, membangkitkan harapan di tempat yang sunyi. 
+              Melalui goresan warna dan detailnya, karya tersebut menyentuh jiwa, membangkitkan emosi tersembunyi yang tak bisa diungkapkan dengan kata-kata. 
+              Dalam diamnya, karya itu berbicara, menyampaikan pesan mendalam yang terasa nyata dan penuh makna.🫧🌌"
+            </p>
+  
           </div>
           <div class="col-lg-5 order-1 order-lg-2">
             <img src="{{ asset('assets/img/menulis-1.png') }}" class="img-fluid" alt="" width="600" height="500">

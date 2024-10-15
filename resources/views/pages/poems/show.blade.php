@@ -48,7 +48,7 @@
                 <div class="card-body bg-light">
                     <div class="card-title text-center mb-4 text-uppercase">
                         <h5 class="fw-bold" style="font-size: 30px; color:rgb(44, 101, 60)">
-                            <span class="bi bi-eye"></span>
+                            <span class="bi bi-book"></span>
                             Poem
                         </h5>
                     </div>
@@ -82,7 +82,8 @@
                                     <!-- Date and User -->
                                     <div class="text-end">
                                         <small class="text-muted">Created at: {{ $poems->created_at->format('d M, Y') }}</small><br>
-                                        <small class="text-muted">Updated at: {{ $poems->updated_at->format('d M, Y') }}</small>
+                                        <small class="text-muted">Updated at: {{ $poems->updated_at->format('d M, Y') }}</small><br>
+                                        <!--<small class="text-muted">Edited by: {{ $poems->user->name }}</small> -->
                                     </div>
                                 </div>
                             </div>
@@ -94,6 +95,7 @@
                                 </a>
     
                                 <div class="d-flex">
+                                    @auth
                                     <a href="{{ route('poems.edit', $poems->id) }}" class="btn btn-outline-primary rounded-pill shadow-lg mx-2">
                                         <i class="bi bi-pencil-square"></i> Edit
                                     </a>
@@ -105,6 +107,7 @@
                                             <i class="bi bi-trash"></i> Delete
                                         </button>
                                     </form>
+                                    @endauth
                                 </div>
                             </div>
                         </div>

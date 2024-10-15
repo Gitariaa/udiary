@@ -19,6 +19,9 @@ class LoginController extends Controller
             // Login berhasil
             return redirect()->intended('home'); 
         }
+        return back()->withErrors([
+            'email' => 'Email atau password salah.'
+        ]);
     }
     /*
     |--------------------------------------------------------------------------
