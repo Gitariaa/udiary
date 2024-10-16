@@ -43,7 +43,7 @@
                         </h4>
                     </div>
 
-                    <form action="{{ route('pantuns.update', $pantun->id) }}" method="POST" class="bg-light p-4 rounded shadow">
+                    <form action="{{ route('pantuns.update', $pantuns->id) }}" method="POST" class="bg-light p-4 rounded shadow">
                         @csrf
                         @method('PUT') <!-- Menggunakan metode PUT untuk update -->
     
@@ -51,17 +51,17 @@
                             <div class="card-body">
                                 <div class="form-group mb-4">
                                     <label for="title" class="form-label">Title<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control shadow-sm" id="title" name="title" value="{{ old('title', $pantun->title) }}" placeholder="Masukkan judul pantun..." required>
+                                    <input type="text" class="form-control shadow-sm" id="title" name="title" value="{{ old('title', $pantuns->title) }}" placeholder="Masukkan judul pantun..." required>
                                 </div>
                         
                                 <div class="form-group mb-4">
                                     <label for="theme" class="form-label">Theme<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control shadow-sm" id="theme" name="theme" value="{{ old('theme', $pantun->theme) }}" placeholder="Masukkan tema pantun..." required>
+                                    <input type="text" class="form-control shadow-sm" id="theme" name="theme" value="{{ old('theme', $pantuns->theme) }}" placeholder="Masukkan tema pantun..." required>
                                 </div>
                         
                                 <div class="form-group mb-4">
                                     <label for="content" class="form-label">Your Pantun<span class="text-danger">*</span></label>
-                                    <textarea class="form-control shadow-sm" id="content" name="content" rows="5" placeholder="Tulis isi pantun Anda di sini..." required>{{ old('content', $pantun->content) }}</textarea>
+                                    <textarea class="form-control shadow-sm" id="content" name="content" rows="5" placeholder="Tulis isi pantun Anda di sini..." required>{{ old('content', $pantuns->content) }}</textarea>
                                 </div>
 
                                 <script>

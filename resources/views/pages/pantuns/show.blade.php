@@ -82,7 +82,10 @@
                                     <!-- Date and User -->
                                     <div class="text-end">
                                         <small class="text-muted">Created at: {{ $pantuns->created_at->format('d M, Y') }}</small><br>
-                                        <small class="text-muted">Updated at: {{ $pantuns->updated_at->format('d M, Y') }}</small>
+                                        <small class="text-muted">Updated at: {{ $pantuns->updated_at->format('d M, Y') }}</small><br>
+                                        @if($pantuns->edited_by)
+                                            <small class="text-muted">Edited by: {{ $pantuns->editor->name }}</small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -114,7 +117,8 @@
     
                     <!-- Footer Message -->
                     <div class="text-center mt-5">
-                        <small class="text-muted">Enjoy your time with inspiring words!</small>
+                        <small class="text-muted">Enjoy your time with inspiring words!</small><br>
+                        <small class="text-muted">Akun lain memiliki izin untuk mengedit karya Anda! Karya Anda dapat diubah oleh akun lain!</small>
                     </div>
                 </div>
             </div>

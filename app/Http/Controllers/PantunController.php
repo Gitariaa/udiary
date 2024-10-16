@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pantun;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PantunController extends Controller
 {
@@ -30,13 +31,19 @@ class PantunController extends Controller
     }
     public function show(string $id)
     {
-        $pantuns = Pantun::find($id);
+        $pantuns = Pantun::with('editor')->find($id);
+        if (!$pantuns) {
+            return redirect()->route('pantuns.index')->with('error', 'Pantun tidak ditemukan.');
+        }
         return view('pages.pantuns.show', compact('pantuns'));
     }
     public function edit(string $id)
     {
-        $pantun = Pantun::findOrFail($id);
-        return view('pages.pantuns.edit', compact('pantun'));
+        $pantuns = Pantun::with('editor')->find($id);
+        if (!$pantuns) {
+            return redirect()->route('pantuns.index')->with('error', 'Pantun tidak ditemukan.');
+        }
+        return view('pages.pantuns.edit', compact('pantuns'));
     }
     public function update(Request $request, string $id)
     {
@@ -47,22 +54,22 @@ class PantunController extends Controller
         ]);
 
         // Update diary
-        $pantuns = Pantun::find($id)->update($request->all());
+        $pantuns = Pantun::findOrFail($id)->update($request->all());
         return redirect()->route('pantuns.index')->with('success', 'UdiarY updated successfully.');
     }
     public function destroy(string $id)
     {
         // Mencari pantun berdasarkan ID
-        $pantun = Pantun::find($id);
+        $pantuns = Pantun::find($id);
         
-        // Memastikan pantun ditemukan sebelum menghapus
-        if ($pantun) {
-            $pantun->delete();
-            return redirect()->route('pantuns.index')->with('success', 'Pantun deleted successfully.');
-        } else {
-            // Jika pantun tidak ditemukan, redirect dengan pesan error
-            return redirect()->route('pantuns.index')->with('error', 'Pantun not found.');
+        // Cek apakah pengguna yang sedang login adalah pembuat
+        if ($pantuns->user_id !== Auth::id()) {
+            return redirect()->back()->with('error', 'Hanya pembuat yang dapat menghapus karya ini.');
         }
+        // Hapus quote
+        $pantuns->delete();
+        return redirect()->route('pantuns.index')->with('success', 'Pantun deleted successfully.');
+
     }
 
 }

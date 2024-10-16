@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Poem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PoemController extends Controller
 {
@@ -47,7 +48,7 @@ class PoemController extends Controller
         ]);
 
         // Update diary
-        $poems = Poem::find($id)->update($request->all());
+        $poems = Poem::findOrFail($id)->update($request->all());
         return redirect()->route('poems.index')->with('success', 'UdiarY updated successfully.');
     }
     public function destroy(string $id)
@@ -55,13 +56,12 @@ class PoemController extends Controller
         // Mencari pantun berdasarkan ID
         $poems = Poem::find($id);
         
-        // Memastikan pantun ditemukan sebelum menghapus
-        if ($poems) {
-            $poems->delete();
-            return redirect()->route('poems.index')->with('success', 'Poem deleted successfully.');
-        } else {
-            // Jika pantun tidak ditemukan, redirect dengan pesan error
-            return redirect()->route('poems.index')->with('error', 'Poem not found.');
+        // Cek apakah pengguna yang sedang login adalah pembuat
+        if ($poems->user_id !== Auth::id()) {
+            return redirect()->back()->with('error', 'Hanya pembuat yang dapat menghapus karya ini.');
         }
+        // Hapus quote
+        $poems->delete();
+        return redirect()->route('poems.index')->with('success', 'Poem deleted successfully.');
     }
 }

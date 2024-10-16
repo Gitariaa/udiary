@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('theme');
             $table->unsignedBigInteger('user_id'); // ID user yang membuat diary
             $table->foreign('user_id')->references('id')->on('users'); // Relasi ke tabel users
+            $table->unsignedBigInteger('edited_by')->nullable(); // User yang terakhir mengedit
+            $table->foreign('edited_by')->references('id')->on('users'); // Relasi ke tabel users
             $table->timestamps();
         });
     }

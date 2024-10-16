@@ -17,7 +17,7 @@ return new class extends Migration
             $table->longText('content'); // Isi diary
             $table->string('theme');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users'); // Relasi ke tabel users
+            $table->unsignedBigInteger('edited_by')->nullable(); // User yang terakhir mengedit
             $table->timestamps();
         });
     }

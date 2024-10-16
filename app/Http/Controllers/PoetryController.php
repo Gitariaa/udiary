@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Poetry;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PoetryController extends Controller
 {
@@ -71,7 +72,7 @@ class PoetryController extends Controller
         ]);
 
         // Update diary
-        $poetries = Poetry::find($id)->update($request->all());
+        $poetries = Poetry::findOrFail($id)->update($request->all());
         return redirect()->route('poetries.index')->with('success', 'UdiarY updated successfully.');
     }
 
@@ -83,13 +84,13 @@ class PoetryController extends Controller
         // Mencari pantun berdasarkan ID
         $poetries = Poetry::find($id);
         
-        // Memastikan pantun ditemukan sebelum menghapus
-        if ($poetries) {
-            $poetries->delete();
-            return redirect()->route('poetries.index')->with('success', 'Poetry deleted successfully.');
-        } else {
-            // Jika pantun tidak ditemukan, redirect dengan pesan error
-            return redirect()->route('poetries.index')->with('error', 'Poetry not found.');
+        // Cek apakah pengguna yang sedang login adalah pembuat
+        if ($poetries->user_id !== Auth::id()) {
+            return redirect()->back()->with('error', 'Hanya pembuat yang dapat menghapus karya ini.');
         }
+        // Hapus quote
+        $poetries->delete();
+        return redirect()->route('poetries.index')->with('success', 'Poetry deleted successfully.');
+
     }
 }

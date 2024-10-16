@@ -110,6 +110,18 @@
         </h2>
   
           <div class="row">
+            @if (session('error'))
+              <div class="alert alert-danger">
+                  {{ session('error') }}
+              </div>
+            @endif
+
+            @if (session('success'))
+              <div class="alert alert-success">
+                  {{ session('success') }}
+              </div>
+            @endif
+
               @foreach($pantuns as $pantun)
               <div class="col-md-4">
                   <div class="card mb-4">
