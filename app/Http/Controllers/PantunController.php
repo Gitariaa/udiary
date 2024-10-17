@@ -54,7 +54,8 @@ class PantunController extends Controller
         ]);
 
         // Update diary
-        $pantuns = Pantun::findOrFail($id)->update($request->all());
+        $pantuns = Pantun::findOrFail($id);
+        $pantuns->update(array_merge($request->all(), ['edited_by' => Auth::id()]));
         return redirect()->route('pantuns.index')->with('success', 'UdiarY updated successfully.');
     }
     public function destroy(string $id)

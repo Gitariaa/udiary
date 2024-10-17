@@ -72,7 +72,8 @@ class PoetryController extends Controller
         ]);
 
         // Update diary
-        $poetries = Poetry::findOrFail($id)->update($request->all());
+        $poetries = Poetry::findOrFail($id);
+        $poetries->update(array_merge($request->all(), ['edited_by' => Auth::id()]));
         return redirect()->route('poetries.index')->with('success', 'UdiarY updated successfully.');
     }
 

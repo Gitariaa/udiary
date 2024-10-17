@@ -48,7 +48,8 @@ class PoemController extends Controller
         ]);
 
         // Update diary
-        $poems = Poem::findOrFail($id)->update($request->all());
+        $poems = Poem::findOrFail($id);
+        $poems->update(array_merge($request->all(), ['edited_by' => Auth::id()]));
         return redirect()->route('poems.index')->with('success', 'UdiarY updated successfully.');
     }
     public function destroy(string $id)

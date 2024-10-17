@@ -77,7 +77,6 @@ class QuoteController extends Controller
 
         // Menghapus quote
         $quotes->delete();
-
         return redirect()->route('quotes.index')->with('success', 'Quote deleted successfully.');
     }
 }

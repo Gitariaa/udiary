@@ -85,6 +85,7 @@
                                 </script>
                         
                                 <input type="hidden" name="user_id" value="{{ auth()->id() }}"> <!-- Ambil user_id dari auth -->
+                                <input type="hidden" name="edited_by" value="{{ auth()->id() }}">
                         
                                 <div class="d-flex justify-content-around">
                                     <a href="{{ route('poetries.index') }}" class="btn btn-outline-primary rounded-pill shadow-lg"><i class="bi bi-x-circle"></i> Cancel </a>
