@@ -128,7 +128,7 @@
                       <div class="card-body">
                           <small class="text-muted">{{ $quote->theme }}</small>
                           <h5 class="card-title">
-                              <a href="{{ route('quotes.show', $quote->id) }}" class="text-dark">
+                              <a href="{{ route('quotes.show', $quote->id) }}" class="text-dark-blue">
                                   {{ $quote->title }}
                               </a>
                           </h5>

@@ -128,7 +128,7 @@
                     <div class="card-body">
                         <small class="text-muted">{{ $poetry->theme }}</small>
                         <h5 class="card-title">
-                            <a href="{{ route('poetries.show', $poetry->id) }}" class="text-dark">
+                            <a href="{{ route('poetries.show', $poetry->id) }}" class="text-dark-blue">
                                 {{ $poetry->title }}
                             </a>
                         </h5>

@@ -60,7 +60,6 @@ class QuoteController extends Controller
         $quotes = Quote::findOrFail($id);
         // Memperbarui quote
         $quotes->update(array_merge($request->all(), ['edited_by' => Auth::id()]));
-
         return redirect()->route('quotes.index')->with('success', 'UdiarY updated successfully.');
     }
 
