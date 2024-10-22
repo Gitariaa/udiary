@@ -37,6 +37,10 @@ class PoemController extends Controller
     public function edit(string $id)
     {
         $poems = Poem::findOrFail($id);
+        // Cek apakah user yang login adalah pemilik pantun
+        if ($poems->user_id !== Auth::id()) {
+            return redirect()->route('poems.index')->with('error', 'Hanya pembuat yang dapat mengedit UdiarY ini.');
+        }
         return view('pages.poems.edit', compact('poems'));
     }
     public function update(Request $request, string $id)
@@ -49,7 +53,15 @@ class PoemController extends Controller
 
         // Update diary
         $poems = Poem::findOrFail($id);
-        $poems->update(array_merge($request->all(), ['edited_by' => Auth::id()]));
+        // Cek apakah user yang login adalah pemilik pantun
+        if ($poems->user_id !== Auth::id()) {
+            return redirect()->back()->with('error', 'Hanya pembuat yang dapat memperbarui UdiarY ini.');
+        }
+        // Update pantun jika pengguna yang login adalah pemiliknya
+        $poems->title = $request->input('title');
+        $poems->content = $request->input('content');
+        $poems->theme = $request->input('theme');
+        $poems->save();
         return redirect()->route('poems.index')->with('success', 'UdiarY updated successfully.');
     }
     public function destroy(string $id)
@@ -59,9 +71,9 @@ class PoemController extends Controller
         
         // Cek apakah pengguna yang sedang login adalah pembuat
         if ($poems->user_id !== Auth::id()) {
-            return redirect()->back()->with('error', 'Hanya pembuat yang dapat menghapus karya ini.');
+            return redirect()->back()->with('error', 'Hanya pembuat yang dapat menghapus UpoeM ini.');
         }
-        // Hapus quote
+        // Hapus poem
         $poems->delete();
         return redirect()->route('poems.index')->with('success', 'Poem deleted successfully.');
     }

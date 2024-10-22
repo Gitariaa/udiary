@@ -57,6 +57,10 @@ class PoetryController extends Controller
     public function edit(string $id)
     {
         $poetry = Poetry::findOrFail($id);
+        // Cek apakah user yang login adalah pemilik pantun
+        if ($poetry->user_id !== Auth::id()) {
+            return redirect()->route('poetries.index')->with('error', 'Hanya pembuat yang dapat mengedit UdiarY ini.');
+        }
         return view('pages.poetries.edit', compact('poetry'));
     }
 
@@ -73,7 +77,16 @@ class PoetryController extends Controller
 
         // Update diary
         $poetries = Poetry::findOrFail($id);
-        $poetries->update(array_merge($request->all(), ['edited_by' => Auth::id()]));
+        // Cek apakah user yang login adalah pemilik pantun
+        if ($poetries->user_id !== Auth::id()) {
+            return redirect()->back()->with('error', 'Hanya pembuat yang dapat memperbarui UdiarY ini.');
+        }
+
+        // Update pantun jika pengguna yang login adalah pemiliknya
+        $poetries->title = $request->input('title');
+        $poetries->content = $request->input('content');
+        $poetries->theme = $request->input('theme');
+        $poetries->save();
         return redirect()->route('poetries.index')->with('success', 'UdiarY updated successfully.');
     }
 
@@ -87,7 +100,7 @@ class PoetryController extends Controller
         
         // Cek apakah pengguna yang sedang login adalah pembuat
         if ($poetries->user_id !== Auth::id()) {
-            return redirect()->back()->with('error', 'Hanya pembuat yang dapat menghapus karya ini.');
+            return redirect()->back()->with('error', 'Hanya pembuat yang dapat menghapus UpoetrY ini.');
         }
         // Hapus quote
         $poetries->delete();

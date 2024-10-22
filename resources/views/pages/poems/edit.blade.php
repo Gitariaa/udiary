@@ -60,7 +60,7 @@
                                 </div>
                         
                                 <div class="form-group mb-4">
-                                    <label for="content" class="form-label">Your Pantun<span class="text-danger">*</span></label>
+                                    <label for="content" class="form-label">Your Poem<span class="text-danger">*</span></label>
                                     <textarea class="form-control shadow-sm" id="content" name="content" rows="5" placeholder="Tulis isi poem Anda di sini..." required>{{ old('content', $poems->content) }}</textarea>
                                 </div>
 

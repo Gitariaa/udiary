@@ -54,6 +54,18 @@
                     </div>
     
                     <div class="row justify-content-center">
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
                         <div class="col-md-10">
                             <!-- Pantun Details -->
                             <div class="card mb-4 shadow-sm border-0">

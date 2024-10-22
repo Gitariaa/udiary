@@ -45,6 +45,10 @@ class QuoteController extends Controller
     public function edit(string $id)
     {
         $quotes = Quote::findOrFail($id);
+        // Cek apakah user yang login adalah pemilik pantun
+        if ($quotes->user_id !== Auth::id()) {
+            return redirect()->route('poems.index')->with('error', 'Hanya pembuat yang dapat mengedit UdiarY ini.');
+        }
         return view('pages.quotes.edit', compact('quotes'));
     }
 
@@ -58,8 +62,15 @@ class QuoteController extends Controller
         ]);
 
         $quotes = Quote::findOrFail($id);
-        // Memperbarui quote
-        $quotes->update(array_merge($request->all(), ['edited_by' => Auth::id()]));
+        // Cek apakah user yang login adalah pemilik pantun
+        if ($quotes->user_id !== Auth::id()) {
+            return redirect()->back()->with('error', 'Hanya pembuat yang dapat memperbarui UdiarY ini.');
+        }
+        // Update pantun jika pengguna yang login adalah pemiliknya
+        $quotes->title = $request->input('title');
+        $quotes->content = $request->input('content');
+        $quotes->theme = $request->input('theme');
+        $quotes->save();
         return redirect()->route('quotes.index')->with('success', 'UdiarY updated successfully.');
     }
 
@@ -71,7 +82,7 @@ class QuoteController extends Controller
 
         // Memastikan hanya pembuat yang dapat menghapus
         if ($quotes->user_id !== Auth::id()) {
-            return redirect()->back()->with('error', 'Hanya pembuat yang dapat menghapus karya ini.');
+            return redirect()->back()->with('error', 'Hanya pembuat yang dapat menghapus UquoteS ini.');
         }
 
         // Menghapus quote
