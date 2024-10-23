@@ -59,7 +59,7 @@ class PoetryController extends Controller
         $poetry = Poetry::findOrFail($id);
         // Cek apakah user yang login adalah pemilik pantun
         if ($poetry->user_id !== Auth::id()) {
-            return redirect()->route('poetries.index')->with('error', 'Hanya pembuat yang dapat mengedit UdiarY ini.');
+            return redirect()->back()->with('error', 'Hanya pembuat yang dapat mengedit UdiarY ini.');
         }
         return view('pages.poetries.edit', compact('poetry'));
     }

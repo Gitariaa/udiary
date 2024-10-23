@@ -39,11 +39,17 @@
 </head>
 
 <body>
-    <div id="app">
+    <header id="header" class="header fixed-top">
+        <div class="branding d-flex align-items-center"> <!-- Perbaikan kesalahan pengetikan -->
+            <div class="container position-relative d-flex align-items-center justify-content-between">
+                <a href="index.html" class="logo d-flex align-items-center">
+                    <h1 class="sitename">UdiarY</h1>
+                    <span>.</span>
+                </a>
 
-        <x-header />
-
-    </div>
+            </div>
+        </div>
+    </header>
 
     <div class="container">
         <section class="section mt-5">
@@ -139,9 +145,7 @@
                         <!-- Footer Message -->
                         <div class="text-center mt-5">
                             <small class="text-muted">Enjoy your time with inspiring words!</small><br>
-                            <small class="text-muted">Akun lain memiliki izin untuk mengedit karya Anda! Karya Anda
-                                dapat
-                                diubah oleh akun lain!</small>
+                            <small class="text-muted">Hanya pemilik akun yang dapat MENGEDIT!!</small>
                         </div>
                     </div>
                 </div>

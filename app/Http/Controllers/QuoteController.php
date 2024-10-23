@@ -47,7 +47,7 @@ class QuoteController extends Controller
         $quotes = Quote::findOrFail($id);
         // Cek apakah user yang login adalah pemilik pantun
         if ($quotes->user_id !== Auth::id()) {
-            return redirect()->route('poems.index')->with('error', 'Hanya pembuat yang dapat mengedit UdiarY ini.');
+            return redirect()->back()->with('error', 'Hanya pembuat yang dapat mengedit UdiarY ini.');
         }
         return view('pages.quotes.edit', compact('quotes'));
     }

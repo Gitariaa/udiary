@@ -44,7 +44,7 @@ class PantunController extends Controller
 
         // Cek apakah user yang login adalah pemilik pantun
         if ($pantuns->user_id !== Auth::id()) {
-            return redirect()->route('pantuns.index')->with('error', 'Hanya pembuat yang dapat mengedit UdiarY ini.');
+            return redirect()->back()->with('error', 'Hanya pembuat yang dapat mengedit UdiarY ini.');
         }
 
         // Tampilkan halaman edit

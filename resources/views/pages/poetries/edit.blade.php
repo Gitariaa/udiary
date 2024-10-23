@@ -28,9 +28,17 @@
   <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <x-header />
-    </div>
+    <header id="header" class="header fixed-top">
+        <div class="branding d-flex align-items-center"> <!-- Perbaikan kesalahan pengetikan -->
+            <div class="container position-relative d-flex align-items-center justify-content-between">
+                <a href="index.html" class="logo d-flex align-items-center">
+                    <h1 class="sitename">UdiarY</h1>
+                    <span>.</span>
+                </a>
+
+            </div>
+        </div>
+    </header>
     
     <div class="container">
         <section class="section">
@@ -78,7 +86,6 @@
                                 <div class="d-flex justify-content-around">
                                     <a href="{{ route('poetries.index') }}" class="btn btn-outline-primary rounded-pill shadow-lg"><i class="bi bi-x-circle"></i> Cancel </a>
                                     <button type="submit" class="btn btn-outline-success rounded-pill shadow-lg"><i class="bi bi-save"></i> Update </button>
-                                    <a href="{{ route('poetries.index') }}" class="btn btn-outline-secondary rounded-pill shadow-lg"><i class="bi bi-arrow-right-circle"></i> Back </a>
                                 </div> 
                             </div>
                         </div>
