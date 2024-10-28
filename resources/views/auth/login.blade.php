@@ -6,7 +6,7 @@
     <title>Udiary - Login</title>
 
     <!-- Favicons -->
-  <link href="{{ asset('assets/img/menulis-1.png') }}" rel="icon">
+  <link href="{{ asset('assets/img/logo-1.png') }}" rel="icon">
   <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
   <!-- Fonts -->
