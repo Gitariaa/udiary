@@ -15,9 +15,12 @@ class LoginController extends Controller
     }
     public function login(Request $request)
     {
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        $credentials = $request->only('email', 'password');
+        $remember = $request->has('remember');
+
+        if (Auth::attempt($credentials, $remember)) {
             // Login berhasil
-            return redirect()->intended('home'); 
+            return redirect()->intended('profile'); 
         }
         return back()->withErrors([
             'email' => 'Email atau password salah.'

@@ -108,7 +108,7 @@
                                 </a>
     
                                 <div class="d-flex">
-                                    @auth
+                                    @if (Auth::check() && Auth::user()->role == 'admin' || Auth::user()->id == $poetries->user_id)
                                     <a href="{{ route('poetries.edit', $poetries->id) }}" class="btn btn-outline-primary rounded-pill shadow-lg mx-2">
                                         <i class="bi bi-pencil-square"></i> Edit
                                     </a>
@@ -120,7 +120,7 @@
                                             <i class="bi bi-trash"></i> Delete
                                         </button>
                                     </form>
-                                    @endauth
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                     <!-- Footer Message -->
                     <div class="text-center mt-5">
                         <small class="text-muted">Enjoy your time with inspiring words!</small><br>
-                        <small class="text-muted">Hanya pemilik akun yang dapat MENGEDIT!!</small>
+                        <small class="text-muted">Hanya pemilik akun dan admin yang dapat MENGEDIT!!</small>
                     </div>
                 </div>
             </div>

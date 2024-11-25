@@ -28,13 +28,13 @@ class PoetryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    
+
     public function store(Request $request)
     {
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required',
-            
+
         ]);
 
         // Membuat diary baru
@@ -58,7 +58,7 @@ class PoetryController extends Controller
     {
         $poetry = Poetry::findOrFail($id);
         // Cek apakah user yang login adalah pemilik pantun
-        if ($poetry->user_id !== Auth::id()) {
+        if ($poetry->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
             return redirect()->back()->with('error', 'Hanya pembuat yang dapat mengedit UdiarY ini.');
         }
         return view('pages.poetries.edit', compact('poetry'));
@@ -77,8 +77,9 @@ class PoetryController extends Controller
 
         // Update diary
         $poetries = Poetry::findOrFail($id);
+        $poetries->update(array_merge($request->all(), ['edited_by' => Auth::id()]));
         // Cek apakah user yang login adalah pemilik pantun
-        if ($poetries->user_id !== Auth::id()) {
+        if ($poetries->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
             return redirect()->back()->with('error', 'Hanya pembuat yang dapat memperbarui UdiarY ini.');
         }
 
@@ -97,14 +98,27 @@ class PoetryController extends Controller
     {
         // Mencari pantun berdasarkan ID
         $poetries = Poetry::find($id);
-        
+
         // Cek apakah pengguna yang sedang login adalah pembuat
-        if ($poetries->user_id !== Auth::id()) {
+        if ($poetries->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
             return redirect()->back()->with('error', 'Hanya pembuat yang dapat menghapus UpoetrY ini.');
         }
         // Hapus quote
         $poetries->delete();
         return redirect()->route('poetries.index')->with('success', 'Poetry deleted successfully.');
+    }
 
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Cari berdasarkan judul atau tema puisi
+        $poetries = Poetry::where('title', 'like', "%$query%")
+            ->orWhere('theme', 'like', "%$query%")
+            ->orderBy('created_at', 'desc') // Urutkan berdasarkan waktu terbaru
+            ->get();
+
+        // Kirim hasil pencarian ke view
+        return view('pages.poetries.index', compact('poetries'));
     }
 }

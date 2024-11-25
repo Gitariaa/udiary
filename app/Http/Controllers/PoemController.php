@@ -38,7 +38,7 @@ class PoemController extends Controller
     {
         $poems = Poem::findOrFail($id);
         // Cek apakah user yang login adalah pemilik pantun
-        if ($poems->user_id !== Auth::id()) {
+        if ($poems->user_id !== Auth::id()  && Auth::user()->role !== 'admin') {
             return redirect()->back()->with('error', 'Hanya pembuat yang dapat mengedit UdiarY ini.');
         }
         return view('pages.poems.edit', compact('poems'));
@@ -53,8 +53,9 @@ class PoemController extends Controller
 
         // Update diary
         $poems = Poem::findOrFail($id);
+        $poems->update(array_merge($request->all(), ['edited_by' => Auth::id()]));
         // Cek apakah user yang login adalah pemilik pantun
-        if ($poems->user_id !== Auth::id()) {
+        if ($poems->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
             return redirect()->back()->with('error', 'Hanya pembuat yang dapat memperbarui UdiarY ini.');
         }
         // Update pantun jika pengguna yang login adalah pemiliknya
@@ -70,7 +71,7 @@ class PoemController extends Controller
         $poems = Poem::find($id);
         
         // Cek apakah pengguna yang sedang login adalah pembuat
-        if ($poems->user_id !== Auth::id()) {
+        if ($poems->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
             return redirect()->back()->with('error', 'Hanya pembuat yang dapat menghapus UpoeM ini.');
         }
         // Hapus poem

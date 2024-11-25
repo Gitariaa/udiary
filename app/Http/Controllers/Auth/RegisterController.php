@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,6 +17,13 @@ class RegisterController extends Controller
         return view('auth.register');  // Menampilkan form register
     }
 
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $user = $this->create($request->all());
+        Auth::login($user);
+        return redirect()->route('profile')->with('success', 'Registrasi berhasil!');
+    }
 
     use RegistersUsers;
 
@@ -47,6 +56,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         ]);
+        Auth::login($user);
+        return redirect()->route('profile');   
     }
 
     /**
@@ -61,6 +72,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => 'user',
         ]);
     }
 

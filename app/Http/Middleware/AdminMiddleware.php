@@ -16,9 +16,8 @@ class AdminAccessMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->hakakses != "admin") {
-            abort(404);
+        if (Auth::check() && Auth::user()->role === 'admin' || Auth::user()->role === 'author') {
+            return $next($request);
         }
-        return $next($request);
     }
 }

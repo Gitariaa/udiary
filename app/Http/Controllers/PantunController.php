@@ -43,7 +43,7 @@ class PantunController extends Controller
         $pantuns = Pantun::findOrFail($id);
 
         // Cek apakah user yang login adalah pemilik pantun
-        if ($pantuns->user_id !== Auth::id()) {
+        if ($pantuns->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
             return redirect()->back()->with('error', 'Hanya pembuat yang dapat mengedit UdiarY ini.');
         }
 
@@ -61,9 +61,9 @@ class PantunController extends Controller
 
         // Temukan pantun berdasarkan ID
         $pantuns = Pantun::findOrFail($id);
-
+        $pantuns->update(array_merge($request->all(), ['edited_by' => Auth::id()]));
         // Cek apakah user yang login adalah pemilik pantun
-        if ($pantuns->user_id !== Auth::id()) {
+        if ($pantuns->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
             return redirect()->back()->with('error', 'Hanya pembuat yang dapat memperbarui UdiarY ini.');
         }
 
@@ -83,7 +83,7 @@ class PantunController extends Controller
         $pantuns = Pantun::find($id);
 
         // Cek apakah pengguna yang sedang login adalah pembuat
-        if ($pantuns->user_id !== Auth::id()) {
+        if ($pantuns->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
             return redirect()->back()->with('error', 'Hanya pembuat yang dapat menghapus UpantuN ini.');
         }
         // Hapus pantun

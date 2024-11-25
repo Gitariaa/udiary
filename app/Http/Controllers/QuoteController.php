@@ -46,7 +46,7 @@ class QuoteController extends Controller
     {
         $quotes = Quote::findOrFail($id);
         // Cek apakah user yang login adalah pemilik pantun
-        if ($quotes->user_id !== Auth::id()) {
+        if ($quotes->user_id !== Auth::id()  && Auth::user()->role !== 'admin') {
             return redirect()->back()->with('error', 'Hanya pembuat yang dapat mengedit UdiarY ini.');
         }
         return view('pages.quotes.edit', compact('quotes'));
@@ -62,8 +62,9 @@ class QuoteController extends Controller
         ]);
 
         $quotes = Quote::findOrFail($id);
+        $quotes->update(array_merge($request->all(), ['edited_by' => Auth::id()]));
         // Cek apakah user yang login adalah pemilik pantun
-        if ($quotes->user_id !== Auth::id()) {
+        if ($quotes->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
             return redirect()->back()->with('error', 'Hanya pembuat yang dapat memperbarui UdiarY ini.');
         }
         // Update pantun jika pengguna yang login adalah pemiliknya
@@ -81,7 +82,7 @@ class QuoteController extends Controller
         $quotes = Quote::findOrFail($id);
 
         // Memastikan hanya pembuat yang dapat menghapus
-        if ($quotes->user_id !== Auth::id()) {
+        if ($quotes->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
             return redirect()->back()->with('error', 'Hanya pembuat yang dapat menghapus UquoteS ini.');
         }
 

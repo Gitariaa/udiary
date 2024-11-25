@@ -16,6 +16,7 @@ Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'r
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/poetries', [App\Http\Controllers\PoetryController::class, 'index'])->name('poetries.index');
+Route::get('poetries/search', [App\Http\Controllers\PoetryController::class, 'search'])->name('poetries.search');
 
 Route::get('/poems', [App\Http\Controllers\PoemController::class, 'index'])->name('poems.index');
 
@@ -48,6 +49,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/quotes/edit/{id}', [App\Http\Controllers\QuoteController::class, 'edit'])->name('quotes.edit');
     Route::put('/quotes/{id}', [App\Http\Controllers\QuoteController::class, 'update'])->name('quotes.update');
     Route::delete('/quotes/{id}', [App\Http\Controllers\QuoteController::class, 'destroy'])->name('quotes.destroy');
+
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 });
 
 //setiap route parameter dibawah ini..

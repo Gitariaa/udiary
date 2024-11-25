@@ -108,7 +108,7 @@
                                 </a>
     
                                 <div class="d-flex">
-                                    @auth
+                                    @if (Auth::check() && Auth::user()->role == 'admin' || Auth::user()->id == $poems->user_id)
                                     <a href="{{ route('poems.edit', $poems->id) }}" class="btn btn-outline-primary rounded-pill shadow-lg mx-2">
                                         <i class="bi bi-pencil-square"></i> Edit
                                     </a>
@@ -120,7 +120,7 @@
                                             <i class="bi bi-trash"></i> Delete
                                         </button>
                                     </form>
-                                    @endauth
+                                    @endif
                                 </div>
                             </div>
                         </div>

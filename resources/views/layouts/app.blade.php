@@ -76,9 +76,17 @@
                     <div class="col-lg-5 order-1 order-lg-2">
                         <img src="{{ asset('assets/img/logoo.png') }}" class="img-fluid" alt=""
                             width="600" height="500">
-                    </div>
+                    </div>   
 
                 </div>
+                <div class="d-flex justify-content-start mt-5" data-aos="fade-up">
+                    <p class="me-3">
+                        <a href="{{route ('profile')}}" class="btn btn-get-started"
+                            style="transition: background-color 0.3s, transform 0.3s; border-radius: 25px; display: flex; align-items: center;">
+                            <i class="bi bi-people me-2"></i> UprofileS
+                        </a>
+                    </p>
+                </div> 
             </div>
 
             <div class="icon-boxes position-relative" data-aos="fade-up" data-aos-delay="200">
