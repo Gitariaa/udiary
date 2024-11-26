@@ -116,7 +116,7 @@
                                 </a>
 
                                 <div class="d-flex">
-                                    @if (Auth::check() && Auth::user()->role == 'admin' || Auth::user()->id == $pantuns->user_id)
+                                    @if (Auth::check() && (Auth::user()->role == 'admin' || Auth::user()->id == $pantuns->user_id))
                                         <a href="{{ route('pantuns.edit', $pantuns->id) }}"
                                             class="btn btn-outline-primary rounded-pill shadow-lg mx-2">
                                             <i class="bi bi-pencil-square"></i> Edit

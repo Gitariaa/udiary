@@ -107,9 +107,12 @@
                     <form action="{{ url('poetries/search') }}" method="GET" class="d-flex justify-content-start">
                         <div class="input-group" style="max-width: 400px; width: 100%;">
                             <input type="text" name="query" class="form-control rounded-pill py-2 px-3"
-                                placeholder="Search Poetry..." required style="border: 2px solid #ddd;">
-                            <button type="submit" class="btn btn-primary ms-2 rounded-pill py-2 px-4"
-                                style="border-color: #5d68a5;">Search</button>
+                                placeholder="Search Poetry..." required value="{{ request('query') }}"
+                                style="border: 2px solid #ddd;">
+                            <button type="submit" class="btn btn-outline-success ms-2 rounded-pill py-2 px-4"
+                                style="border-color: #5da563;">
+                                Search
+                            </button>
                         </div>
                     </form>
                 </div>

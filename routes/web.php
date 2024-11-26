@@ -19,10 +19,13 @@ Route::get('/poetries', [App\Http\Controllers\PoetryController::class, 'index'])
 Route::get('poetries/search', [App\Http\Controllers\PoetryController::class, 'search'])->name('poetries.search');
 
 Route::get('/poems', [App\Http\Controllers\PoemController::class, 'index'])->name('poems.index');
+Route::get('poems/search', [App\Http\Controllers\PoemController::class, 'search'])->name('poems.search');
 
 Route::get('/pantuns', [App\Http\Controllers\PantunController::class, 'index'])->name('pantuns.index');
+Route::get('pantuns/search', [App\Http\Controllers\PantunController::class, 'search'])->name('pantuns.search');
 
 Route::get('/quotes', [App\Http\Controllers\QuoteController::class, 'index'])->name('quotes.index');
+Route::get('quotes/search', [App\Http\Controllers\QuoteController::class, 'search'])->name('quotes.search');
 
 //middlewate untuk batasan akses
 Route::middleware(['auth'])->group(function () {   

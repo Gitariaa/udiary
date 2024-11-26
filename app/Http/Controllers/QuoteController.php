@@ -11,7 +11,7 @@ class QuoteController extends Controller
     // Menampilkan semua quote
     public function index()
     {
-        $quotes = Quote::all();
+        $quotes = Quote::orderBy('created_at', 'desc')->get();
         return view('pages.quotes.index', compact('quotes'));
     }
 
@@ -89,5 +89,18 @@ class QuoteController extends Controller
         // Menghapus quote
         $quotes->delete();
         return redirect()->route('quotes.index')->with('success', 'Quote deleted successfully.');
+    }
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Cari berdasarkan judul atau tema puisi
+        $quotes = Quote::where('title', 'like', "%$query%")
+            ->orWhere('theme', 'like', "%$query%")
+            ->orderBy('created_at', 'desc') // Urutkan berdasarkan waktu terbaru
+            ->get();
+
+        // Kirim hasil pencarian ke view
+        return view('pages.quotes.index', compact('quotes'));
     }
 }

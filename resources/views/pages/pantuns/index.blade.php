@@ -9,8 +9,8 @@
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="assets/img/logo-1.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="{{ asset('assets/img/logo-1.png') }}" rel="icon">
+    <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -20,14 +20,14 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
     <!-- Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 
 </head>
 
@@ -91,7 +91,7 @@
                 <div class="container">
                     <ol>
                         <li><a href="{{ url('/') }}">UdiarY</a></li>
-                        <li class="current">UpantuN</li>
+                        <li class="current"><a href="{{ url('/pantuns') }}">UpantuN</a></li>
                     </ol>
                 </div>
             </nav>
@@ -102,6 +102,20 @@
         <section id="blog-posts" class="blog-posts section">
 
             <div class="container">
+                <!-- Search Form -->
+                <div class="search-container my-4">
+                    <form action="{{ url('pantuns/search') }}" method="GET" class="d-flex justify-content-start">
+                        <div class="input-group" style="max-width: 400px; width: 100%;">
+                            <input type="text" name="query" class="form-control rounded-pill py-2 px-3"
+                                placeholder="Search Pantun..." required value="{{ request('query') }}"
+                                style="border: 2px solid #ddd;">
+                            <button type="submit" class="btn btn-outline-success ms-2 rounded-pill py-2 px-4"
+                                style="border-color: #5da563;">
+                                Search
+                            </button>
+                        </div>
+                    </form>
+                </div>
                 <h2 class="poetry-title">
                     <i class="fas fa-pen-alt"> List of Pantun</i>
                 </h2>
@@ -119,22 +133,28 @@
                         </div>
                     @endif
 
-                    @foreach ($pantuns as $pantun)
-                        <div class="col-md-4">
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <small class="text-muted">{{ $pantun->theme }}</small>
-                                    <h5 class="card-title">
-                                        <a href="{{ route('pantuns.show', $pantun->id) }}" class="text-dark-blue">
-                                            {{ $pantun->title }}
-                                        </a>
-                                    </h5>
-                                    <p class="card-text"><strong>{{ $pantun->user->name }}</strong></p>
-                                    <p class="card-text text-muted">{{ $pantun->created_at->format('M d, Y') }}</p>
+                    @if ($pantuns->isEmpty())
+                        <div class="alert alert-warning text-center">
+                            Maaf, UpantuN yang anda cari tidak ada😭.
+                        </div>
+                    @else
+                        @foreach ($pantuns as $pantun)
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <small class="text-muted">{{ $pantun->theme }}</small>
+                                        <h5 class="card-title">
+                                            <a href="{{ route('pantuns.show', $pantun->id) }}" class="text-dark-blue">
+                                                {{ $pantun->title }}
+                                            </a>
+                                        </h5>
+                                        <p class="card-text"><strong>{{ $pantun->user->name }}</strong></p>
+                                        <p class="card-text text-muted">{{ $pantun->created_at->format('M d, Y') }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @endif
                 </div>
             </div>
 

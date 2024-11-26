@@ -13,7 +13,7 @@ class PoetryController extends Controller
      */
     public function index()
     {
-        $poetries = Poetry::all();
+        $poetries = Poetry::orderBy('created_at', 'desc')->get();
         return view('pages.poetries.index', compact('poetries'));
     }
 

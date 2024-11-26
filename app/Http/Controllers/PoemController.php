@@ -10,7 +10,7 @@ class PoemController extends Controller
 {
     public function index()
     {
-        $poems = Poem::all();
+        $poems = Poem::orderBy('created_at', 'desc')->get();
         return view('pages.poems.index', compact('poems'));
     }
     public function create()
@@ -77,5 +77,19 @@ class PoemController extends Controller
         // Hapus poem
         $poems->delete();
         return redirect()->route('poems.index')->with('success', 'Poem deleted successfully.');
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Cari berdasarkan judul atau tema puisi
+        $poems = Poem::where('title', 'like', "%$query%")
+            ->orWhere('theme', 'like', "%$query%")
+            ->orderBy('created_at', 'desc') // Urutkan berdasarkan waktu terbaru
+            ->get();
+
+        // Kirim hasil pencarian ke view
+        return view('pages.poems.index', compact('poems'));
     }
 }

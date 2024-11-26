@@ -115,7 +115,10 @@
             <p><i class="bi bi-person-fill"></i> <strong>Nama:</strong> {{ Auth::user()->name }}</p>
             <p><i class="bi bi-envelope-fill"></i> <strong>Email:</strong> {{ Auth::user()->email }}</p>
             <p><i class="bi bi-shield-lock-fill"></i> <strong>Role:</strong> {{ Auth::user()->role === 'admin' ? 'Administrator' : 'Author' }}</p>
-            <a href="{{ route('logout') }}" class="btn btn-danger mt-3" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <a href="{{ url('/') }}" class="btn btn-outline-secondary mt-3">
+              <i class="bi bi-box-arrow-left"></i> Back
+            </a>
+            <a href="{{ route('logout') }}" class="btn btn-outline-danger mt-3" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               <i class="bi bi-box-arrow-right"></i> Logout
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>

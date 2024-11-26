@@ -10,7 +10,7 @@ class PantunController extends Controller
 {
     public function index()
     {
-        $pantuns = Pantun::all();
+        $pantuns = Pantun::orderBy('created_at', 'desc')->get();
         return view('pages.pantuns.index', compact('pantuns'));
     }
     public function create()
@@ -89,5 +89,19 @@ class PantunController extends Controller
         // Hapus pantun
         $pantuns->delete();
         return redirect()->route('pantuns.index')->with('success', 'Pantun deleted successfully.');
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Cari berdasarkan judul atau tema puisi
+        $pantuns = Pantun::where('title', 'like', "%$query%")
+            ->orWhere('theme', 'like', "%$query%")
+            ->orderBy('created_at', 'desc') // Urutkan berdasarkan waktu terbaru
+            ->get();
+
+        // Kirim hasil pencarian ke view
+        return view('pages.pantuns.index', compact('pantuns'));
     }
 }
