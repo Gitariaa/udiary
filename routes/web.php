@@ -15,6 +15,8 @@ Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'r
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/information', [App\Http\Controllers\InfoController::class, 'index'])->name('information.index');
+
 Route::get('/poetries', [App\Http\Controllers\PoetryController::class, 'index'])->name('poetries.index');
 Route::get('poetries/search', [App\Http\Controllers\PoetryController::class, 'search'])->name('poetries.search');
 

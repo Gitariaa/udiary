@@ -19,6 +19,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // Set session flash untuk menampilkan alert
+        session()->flash('showInfoAlert', true);
+        
         return view('layouts.app');
     }
 }

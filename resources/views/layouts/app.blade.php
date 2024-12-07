@@ -29,6 +29,9 @@
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 
+    <link href="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css') }}"
+        rel="stylesheet">
+
 </head>
 
 <body class="index-page">
@@ -41,6 +44,20 @@
 
     <main class="main">
 
+        @if (session('showInfoAlert'))
+            <div id="infoAlert" class="alert alert-info alert-dismissible fade show shadow-lg rounded"
+                style="padding: 10px; margin-top: 75px; position: relative; border-left: 5px solid #17a2b8; background-color: #e9f7fd; color: #0c5460;">
+                <div style="display: flex; align-items: center;">
+                    <i class="bi bi-info-circle-fill" style="font-size: 24px; margin-right: 10px; color: #17a2b8;"></i>
+                    <div>
+                        <strong style="font-size: 18px;">Perhatian!</strong>
+                        <p style="margin: 0;">Jangan lupa cek Uinfo terlebih dahulu untuk pengalaman terbaik.</p>
+                    </div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                    style="position: absolute; top: 10px; right: 10px; color: #0c5460;"></button>
+            </div>
+        @endif
 
         <!-- Hero Section -->
         <section id="hero" class="hero section accent-background">
@@ -52,7 +69,8 @@
                             <span style="color: rgb(14, 51, 10)">Welcome to </span>
                             <span class="accent">UdiarY</span>
                             @auth
-                                <small style="font-size: 0.8em; color: rgb(233, 243, 232);">{{ Auth::user()->name }}!</small>
+                                <small
+                                    style="font-size: 0.8em; color: rgb(233, 243, 232);">{{ Auth::user()->name }}!</small>
                             @endauth
                         </h2>
                         <p data-aos="fade-up" style="font-size: 16px; color:rgb(219, 245, 233)">
@@ -74,19 +92,21 @@
 
                     </div>
                     <div class="col-lg-5 order-1 order-lg-2">
-                        <img src="{{ asset('assets/img/logoo.png') }}" class="img-fluid" alt=""
-                            width="600" height="500">
-                    </div>   
+                        <img src="{{ asset('assets/img/logoo.png') }}" class="img-fluid" alt="" width="600"
+                            height="500">
+                    </div>
 
                 </div>
-                <div class="d-flex justify-content-start mt-5" data-aos="fade-up">
-                    <p class="me-3">
-                        <a href="{{route ('profile')}}" class="btn btn-get-started"
-                            style="transition: background-color 0.3s, transform 0.3s; border-radius: 25px; display: flex; align-items: center;">
-                            <i class="bi bi-people me-2"></i> UprofileS
-                        </a>
-                    </p>
-                </div> 
+                @auth
+                    <div class="d-flex justify-content-start mt-5" data-aos="fade-up">
+                        <p class="me-3">
+                            <a href="{{ route('profile') }}" class="btn btn-get-started"
+                                style="transition: background-color 0.3s, transform 0.3s; border-radius: 25px; display: flex; align-items: center;">
+                                <i class="bi bi-people me-2"></i> UprofileS
+                            </a>
+                        </p>
+                    </div>
+                @endauth
             </div>
 
             <div class="icon-boxes position-relative" data-aos="fade-up" data-aos-delay="200">
@@ -215,6 +235,19 @@
     <!-- Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                var infoAlert = document.getElementById("infoAlert");
+                if (infoAlert) {
+                    infoAlert.classList.add("fade");
+                    setTimeout(() => infoAlert.remove(), 500); // Hilang setelah animasi fade
+                }
+            }, 10000); // Hilang setelah 10 detik
+        });
+    </script>
+
 </body>
+
 
 </html>
