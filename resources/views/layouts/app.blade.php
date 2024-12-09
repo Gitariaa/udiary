@@ -44,7 +44,7 @@
 
     <main class="main">
 
-        @if (session('showInfoAlert'))
+        @if (session('showInfoAlert') && !auth()->check())
             <div id="infoAlert" class="alert alert-info alert-dismissible fade show shadow-lg rounded"
                 style="padding: 10px; margin-top: 75px; position: relative; border-left: 5px solid #17a2b8; background-color: #e9f7fd; color: #0c5460;">
                 <div style="display: flex; align-items: center;">

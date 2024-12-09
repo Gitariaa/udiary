@@ -125,6 +125,58 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="mt-5">
+                        <h5 class="fw-bold text-success text-uppercase">Comments</h5>
+                    
+                        <!-- Display Comments -->
+                        @foreach($poems->comments as $comment)
+                            <div class="border rounded p-3 mb-3 bg-light shadow-sm">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <!-- Info User dan Tanggal -->
+                                    <small class="text-muted">
+                                        <strong>{{ $comment->user->name }}</strong> -
+                                        {{ $comment->created_at->format('d M, Y H:i') }}
+                                    </small>
+
+                                    <!-- Tombol Delete -->
+                                    @if (Auth::check() && (Auth::id() === $comment->user_id || Auth::user()->role === 'admin'))
+                                        <form action="{{ route('comments.destroy', $comment->id) }}" method="POST"
+                                            onsubmit="return confirm('Are you sure to delete this comment?');"
+                                            class="mb-0">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    @endif
+                                </div>
+
+                                <!-- Konten Komentar -->
+                                <p class="mb-0 mt-2">{{ $comment->content }}</p>
+                            </div>
+                        @endforeach
+                    
+                        <!-- Add Comment Form -->
+                        @auth
+                        <form action="{{ route('comments.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="commentable_type" value="App\Models\Poem">
+                            <input type="hidden" name="commentable_id" value="{{ $poems->id }}">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-grow-1 me-2">
+                                    <textarea name="content" class="form-control rounded-pill shadow-lg" rows="2" placeholder="Add a comment..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-outline-success rounded-pill shadow-lg d-flex align-items-center">
+                                    <i class="bi bi-send me-2"></i> Send </button>
+                            </div>
+                        </form>
+                        @else
+                            <p class="text-muted">Please <a href="{{ route('login') }}">log in</a> to leave a comment.</p>
+                        @endauth
+                    </div>
+                    
     
                     <!-- Footer Message -->
                     <div class="text-center mt-5">

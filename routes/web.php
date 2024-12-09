@@ -56,6 +56,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/quotes/{id}', [App\Http\Controllers\QuoteController::class, 'destroy'])->name('quotes.destroy');
 
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+
+    Route::post('/comments', [App\Http\Controllers\CommentController::class, 'store'])->name('comments.store');
+    Route::delete('/comments/{id}', [App\Http\Controllers\CommentController::class, 'destroy'])->name('comments.destroy');
 });
 
 //setiap route parameter dibawah ini..

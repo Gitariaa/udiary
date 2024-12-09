@@ -18,4 +18,8 @@ class Quote extends Model
     {
         return $this->belongsTo(User::class, 'edited_by');
     }
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }
